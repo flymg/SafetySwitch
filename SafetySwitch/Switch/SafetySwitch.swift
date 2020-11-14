@@ -197,7 +197,7 @@ class SafetySwitch: UIControl {
         }
     }
     
-    @IBInspectable var stateColor: UIColor = UIColor.clear {
+    @IBInspectable lazy var stateColor: UIColor = self.isOn ? UIColor.systemGreen : UIColor.systemRed {
         didSet {
             loadingIndicatorDonutLayer.fillColor = stateColor.cgColor
         }
