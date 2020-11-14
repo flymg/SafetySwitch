@@ -4,7 +4,7 @@
 
 import UIKit
 
-class HapticFeedbackGenerator {
+class LoadingIndicatorHapticFeedbackGenerator {
     
     func soft() {
         self.sendHapticFeedback(style: .soft)

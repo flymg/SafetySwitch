@@ -119,7 +119,7 @@ class LoadingIndicatorSwitch: UIControl {
     
     private var switchState: SwitchState = .off
     private var loadingDirection: LoadingType = .loading
-    private let hapticFeedback: HapticFeedbackGenerator = HapticFeedbackGenerator()
+    private let hapticFeedback: LoadingIndicatorHapticFeedbackGenerator = LoadingIndicatorHapticFeedbackGenerator()
     
     /**
      Updates the View and animate the transitioning process.
