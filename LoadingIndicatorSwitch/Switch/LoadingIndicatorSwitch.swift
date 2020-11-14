@@ -42,6 +42,7 @@ class LoadingIndicatorButton: UIControl {
         self.layer.addSublayer(innerCircleLayer)
     }
 
+    // MARK: - Handle Darkmode
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
             super.traitCollectionDidChange(previousTraitCollection)
 
@@ -110,15 +111,20 @@ class LoadingIndicatorButton: UIControl {
         abortTransition()
     }
 
-    enum ButtonState {
+    // MARK: - Transitions
+    enum SwitchState {
         case on
         case off
         case unknown
     }
 
-    var switchState: ButtonState = .off
-
-    // MARK: - Transitions
+    private var switchState: SwitchState = .off
+    private var loadingDirection: LoadingType = .loading
+    private let hapticFeedback: HapticFeedbackGenerator = HapticFeedbackGenerator()
+    
+    /**
+        Updates the View and animate the transitioning process.
+    */
     func startTransition() {
         switch switchState {
         case .unknown:
@@ -134,6 +140,9 @@ class LoadingIndicatorButton: UIControl {
         }
     }
 
+    /**
+        Cancels the transitioning animation.
+    */
     func abortTransition() {
         switch switchState {
         case .unknown:
@@ -161,9 +170,6 @@ class LoadingIndicatorButton: UIControl {
             stateColor = .systemGreen
         }
     }
-
-    private var loadingDirection: LoadingType = .loading
-    private let hapticFeedback: HapticFeedbackGenerator = HapticFeedbackGenerator()
     
     // MARK: - Properties
     @IBInspectable lazy var indicatorWidth: CGFloat = 0.09 * self.bounds.width {
