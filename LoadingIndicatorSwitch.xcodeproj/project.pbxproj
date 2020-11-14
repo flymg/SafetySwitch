@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B803F2CF255DC9FD000B2BB0 /* DonutShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CA255DC9FD000B2BB0 /* DonutShapeLayer.swift */; };
+		B803F2D1255DC9FD000B2BB0 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */; };
+		B803F2D2255DC9FD000B2BB0 /* CircleShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */; };
+		B803F2D3255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */; };
+		B866D407255D4C92000F79D4 /* LoadingIndicatorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */; };
+		B895257A255FBFC300ED6D7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B8952579255FBFC300ED6D7D /* .swiftlint.yml */; };
+		B8967BE7255C7E2300ABB3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8967BE6255C7E2300ABB3AF /* AppDelegate.swift */; };
+		B8967BE9255C7E2300ABB3AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8967BE8255C7E2300ABB3AF /* SceneDelegate.swift */; };
+		B8967BEE255C7E2300ABB3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8967BEC255C7E2300ABB3AF /* Main.storyboard */; };
+		B8967BF0255C7E2500ABB3AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8967BEF255C7E2500ABB3AF /* Assets.xcassets */; };
+		B8C4E48D255FDB27008879FC /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4E48C255FDB27008879FC /* HapticFeedbackGenerator.swift */; };
+		B8D2FCE0255EFE3100E47135 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		B8D4C4F7255C8145008B60F8 /* LoadingIndicatorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B803F2CA255DC9FD000B2BB0 /* DonutShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutShapeLayer.swift; sourceTree = "<group>"; };
+		B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
+		B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapeLayer.swift; sourceTree = "<group>"; };
+		B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorShapeLayer.swift; sourceTree = "<group>"; };
+		B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorSwitch.swift; sourceTree = "<group>"; };
+		B88F5693255DD46B00563CAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8952579255FBFC300ED6D7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B8967BE3255C7E2300ABB3AF /* LoadingIndicatorSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoadingIndicatorSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8967BE6255C7E2300ABB3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B8967BE8255C7E2300ABB3AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B8967BED255C7E2300ABB3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8967BEF255C7E2500ABB3AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B8C4E48C255FDB27008879FC /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
+		B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingIndicatorButton.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B8967BE0255C7E2300ABB3AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D2FCE0255EFE3100E47135 /* (null) in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B803F2D5255DCA05000B2BB0 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */,
+				B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */,
+				B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */,
+				B803F2CA255DC9FD000B2BB0 /* DonutShapeLayer.swift */,
+				B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */,
+				B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */,
+				B8C4E48C255FDB27008879FC /* HapticFeedbackGenerator.swift */,
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
+		B8967BDA255C7E2300ABB3AF = {
+			isa = PBXGroup;
+			children = (
+				B8952579255FBFC300ED6D7D /* .swiftlint.yml */,
+				B8967BE5255C7E2300ABB3AF /* LoadingIndicatorSwitch */,
+				B8967BE4255C7E2300ABB3AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B8967BE4255C7E2300ABB3AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8967BE3255C7E2300ABB3AF /* LoadingIndicatorSwitch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8967BE5255C7E2300ABB3AF /* LoadingIndicatorSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				B803F2D5255DCA05000B2BB0 /* Switch */,
+				B8967BE6255C7E2300ABB3AF /* AppDelegate.swift */,
+				B8967BE8255C7E2300ABB3AF /* SceneDelegate.swift */,
+				B8967BEC255C7E2300ABB3AF /* Main.storyboard */,
+				B8967BEF255C7E2500ABB3AF /* Assets.xcassets */,
+				B88F5693255DD46B00563CAC /* Info.plist */,
+			);
+			path = LoadingIndicatorSwitch;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B8967BE2255C7E2300ABB3AF /* LoadingIndicatorSwitch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8967BF7255C7E2500ABB3AF /* Build configuration list for PBXNativeTarget "LoadingIndicatorSwitch" */;
+			buildPhases = (
+				B8D85BF0255F2A3400C8D1AC /* ShellScript */,
+				B8967BDF255C7E2300ABB3AF /* Sources */,
+				B8967BE0255C7E2300ABB3AF /* Frameworks */,
+				B8967BE1255C7E2300ABB3AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoadingIndicatorSwitch;
+			packageProductDependencies = (
+			);
+			productName = LoadingIndicator;
+			productReference = B8967BE3255C7E2300ABB3AF /* LoadingIndicatorSwitch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B8967BDB255C7E2300ABB3AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					B8967BE2255C7E2300ABB3AF = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = B8967BDE255C7E2300ABB3AF /* Build configuration list for PBXProject "LoadingIndicatorSwitch" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B8967BDA255C7E2300ABB3AF;
+			packageReferences = (
+			);
+			productRefGroup = B8967BE4255C7E2300ABB3AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B8967BE2255C7E2300ABB3AF /* LoadingIndicatorSwitch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B8967BE1255C7E2300ABB3AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B895257A255FBFC300ED6D7D /* .swiftlint.yml in Resources */,
+				B8967BF0255C7E2500ABB3AF /* Assets.xcassets in Resources */,
+				B8D4C4F7255C8145008B60F8 /* LoadingIndicatorButton.xib in Resources */,
+				B8967BEE255C7E2300ABB3AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8D85BF0255F2A3400C8D1AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint --config .swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B8967BDF255C7E2300ABB3AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B803F2D3255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift in Sources */,
+				B803F2D1255DC9FD000B2BB0 /* LoadingAnimation.swift in Sources */,
+				B8967BE7255C7E2300ABB3AF /* AppDelegate.swift in Sources */,
+				B803F2D2255DC9FD000B2BB0 /* CircleShapeLayer.swift in Sources */,
+				B803F2CF255DC9FD000B2BB0 /* DonutShapeLayer.swift in Sources */,
+				B8C4E48D255FDB27008879FC /* HapticFeedbackGenerator.swift in Sources */,
+				B8967BE9255C7E2300ABB3AF /* SceneDelegate.swift in Sources */,
+				B866D407255D4C92000F79D4 /* LoadingIndicatorSwitch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B8967BEC255C7E2300ABB3AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8967BED255C7E2300ABB3AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B8967BF5255C7E2500ABB3AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B8967BF6255C7E2500ABB3AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B8967BF8255C7E2500ABB3AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N83C5W2GYG;
+				INFOPLIST_FILE = "$(SRCROOT)/LoadingIndicatorSwitch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.rapid.LoadingIndicatorSwitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8967BF9255C7E2500ABB3AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N83C5W2GYG;
+				INFOPLIST_FILE = "$(SRCROOT)/LoadingIndicatorSwitch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.rapid.LoadingIndicatorSwitch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B8967BDE255C7E2300ABB3AF /* Build configuration list for PBXProject "LoadingIndicatorSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8967BF5255C7E2500ABB3AF /* Debug */,
+				B8967BF6255C7E2500ABB3AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8967BF7255C7E2500ABB3AF /* Build configuration list for PBXNativeTarget "LoadingIndicatorSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8967BF8255C7E2500ABB3AF /* Debug */,
+				B8967BF9255C7E2500ABB3AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B8967BDB255C7E2300ABB3AF /* Project object */;
+}
