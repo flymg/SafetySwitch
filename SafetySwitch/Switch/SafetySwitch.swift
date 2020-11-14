@@ -8,6 +8,7 @@ import UIKit
  A Switch, that needs a long press to be acitvated. Progress feedback of the waiting durations is provided.
  
  For safety critical purposes and situations where it needs to be ensured that no accidential touches triggers the switch.
+ When the switch area is left while touching, the loading action is aborted.
  */
 @IBDesignable
 class SafetySwitch: UIControl {
@@ -66,11 +67,11 @@ class SafetySwitch: UIControl {
     func animateStroke() {
         
         let loadingAnimation = LoadingAnimation(
-            direction: indicationType, duration: loadingDuration
+            direction: indicationType, duration: switchTime
         )
         
         let strokeAnimationGroup = CAAnimationGroup()
-        strokeAnimationGroup.duration = loadingDuration
+        strokeAnimationGroup.duration = switchTime
         strokeAnimationGroup.repeatDuration = .infinity
         strokeAnimationGroup.animations = [loadingAnimation]
         
@@ -83,7 +84,7 @@ class SafetySwitch: UIControl {
     
     private func addGestures() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressCompleted(gesture:)))
-        longPress.minimumPressDuration = loadingDuration
+        longPress.minimumPressDuration = switchTime
         longPress.allowableMovement = self.bounds.width
         self.gestureRecognizer = longPress
         self.addGestureRecognizer(longPress)
@@ -127,11 +128,11 @@ class SafetySwitch: UIControl {
     func startTransition() {
         if isEnabled {
             if isOn {
-                indicatorColor = .systemRed
+                indicatorColor = isOffColor
                 stateColor = .clear
                 isAnimating = true
             } else {
-                indicatorColor = .systemGreen
+                indicatorColor = isOnColor
                 stateColor = .clear
                 isAnimating = true
             }
@@ -143,9 +144,9 @@ class SafetySwitch: UIControl {
      */
     func abortTransition() {
         if isOn {
-            stateColor = .systemGreen
+            stateColor = isOnColor
         } else {
-            stateColor = .systemRed
+            stateColor = isOffColor
         }
         isAnimating = false
     }
@@ -155,9 +156,9 @@ class SafetySwitch: UIControl {
      */
     func completeTransition() {
         if isOn {
-            stateColor = .systemRed
+            stateColor = isOffColor
         } else {
-            stateColor = .systemGreen
+            stateColor = isOnColor
         }
         isOn.toggle()
         isAnimating = false
@@ -168,6 +169,8 @@ class SafetySwitch: UIControl {
      Determines the state of the switch. Default is On.
      */
     @IBInspectable var isOn: Bool = true
+    @IBInspectable var isOnColor: UIColor = UIColor.systemGreen
+    @IBInspectable var isOffColor: UIColor = UIColor.systemRed
     
     @IBInspectable lazy var indicatorWidth: CGFloat = 0.09 * self.bounds.width {
         didSet {
@@ -175,19 +178,13 @@ class SafetySwitch: UIControl {
         }
     }
     
-    @IBInspectable var deloadingAnimation: Bool = false {
+    @IBInspectable var isDeloading: Bool = false {
         didSet {
-            if deloadingAnimation {
+            if isDeloading {
                 indicationType = .deloading
             } else {
                 indicationType = .loading
             }
-        }
-    }
-    
-    @IBInspectable var indicatorColor: UIColor = UIColor.systemGreen {
-        didSet {
-            loadingIndicatorShapeLayer.strokeColor = indicatorColor.cgColor
         }
     }
     
@@ -197,16 +194,10 @@ class SafetySwitch: UIControl {
         }
     }
     
-    @IBInspectable lazy var stateColor: UIColor = self.isOn ? UIColor.systemGreen : UIColor.systemRed {
+    @IBInspectable var switchTime: Double = 1 {
         didSet {
-            loadingIndicatorDonutLayer.fillColor = stateColor.cgColor
-        }
-    }
-    
-    @IBInspectable var loadingDuration: Double = 1 {
-        didSet {
-            let temp = loadingDuration
-            loadingDuration = temp
+            let temp = switchTime
+            switchTime = temp
         }
     }
     
@@ -227,6 +218,18 @@ class SafetySwitch: UIControl {
             innerCircleLayer.fillColor = innerColor.cgColor
         }
     }
+    // MARK: - Switch Colors
+    lazy var indicatorColor: UIColor = self.isOn ? self.isOffColor : self.isOnColor {
+        didSet {
+            loadingIndicatorShapeLayer.strokeColor = indicatorColor.cgColor
+        }
+    }
+    
+    lazy var stateColor: UIColor = self.isOn ? self.isOnColor : self.isOffColor {
+         didSet {
+             loadingIndicatorDonutLayer.fillColor = stateColor.cgColor
+         }
+     }
     
     // MARK: - Layers
     private lazy var outerDonutLayer: DonutShapeLayer = {
