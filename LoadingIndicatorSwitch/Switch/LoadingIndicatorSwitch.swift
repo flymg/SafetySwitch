@@ -5,7 +5,7 @@
 import UIKit
 
 @IBDesignable
-class LoadingIndicatorButton: UIControl {
+class LoadingIndicatorSwitch: UIControl {
 
     // MARK: - Initialization
     override init(frame: CGRect) {
