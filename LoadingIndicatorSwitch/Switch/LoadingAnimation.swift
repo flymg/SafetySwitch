@@ -10,7 +10,7 @@ class LoadingAnimation: CABasicAnimation {
         super.init()
     }
 
-    init(direction: LoadingType, duration: Double) {
+    init(direction: IndicationType, duration: Double) {
 
         super.init()
 
@@ -29,7 +29,7 @@ class LoadingAnimation: CABasicAnimation {
 
 }
 
-enum LoadingType {
+enum IndicationType {
     case loading
     case deloading
 }

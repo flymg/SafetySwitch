@@ -11,13 +11,13 @@
 		B803F2D1255DC9FD000B2BB0 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */; };
 		B803F2D2255DC9FD000B2BB0 /* CircleShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */; };
 		B803F2D3255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */; };
-		B866D407255D4C92000F79D4 /* LoadingIndicatorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */; };
+		B866D407255D4C92000F79D4 /* SafetySwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866D406255D4C92000F79D4 /* SafetySwitch.swift */; };
 		B895257A255FBFC300ED6D7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B8952579255FBFC300ED6D7D /* .swiftlint.yml */; };
 		B8967BE7255C7E2300ABB3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8967BE6255C7E2300ABB3AF /* AppDelegate.swift */; };
 		B8967BE9255C7E2300ABB3AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8967BE8255C7E2300ABB3AF /* SceneDelegate.swift */; };
 		B8967BEE255C7E2300ABB3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8967BEC255C7E2300ABB3AF /* Main.storyboard */; };
 		B8967BF0255C7E2500ABB3AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8967BEF255C7E2500ABB3AF /* Assets.xcassets */; };
-		B8C4E48D255FDB27008879FC /* LoadingIndicatorHapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4E48C255FDB27008879FC /* LoadingIndicatorHapticFeedbackGenerator.swift */; };
+		B8C4E48D255FDB27008879FC /* SafetySwitchHapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4E48C255FDB27008879FC /* SafetySwitchHapticFeedbackGenerator.swift */; };
 		B8D2FCE0255EFE3100E47135 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		B8D4C4F7255C8145008B60F8 /* LoadingIndicatorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapeLayer.swift; sourceTree = "<group>"; };
 		B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorShapeLayer.swift; sourceTree = "<group>"; };
-		B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorSwitch.swift; sourceTree = "<group>"; };
+		B866D406255D4C92000F79D4 /* SafetySwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetySwitch.swift; sourceTree = "<group>"; };
 		B88F5693255DD46B00563CAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8952579255FBFC300ED6D7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B8967BE3255C7E2300ABB3AF /* LoadingIndicatorSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoadingIndicatorSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +35,7 @@
 		B8967BE8255C7E2300ABB3AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B8967BED255C7E2300ABB3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8967BEF255C7E2500ABB3AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8C4E48C255FDB27008879FC /* LoadingIndicatorHapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorHapticFeedbackGenerator.swift; sourceTree = "<group>"; };
+		B8C4E48C255FDB27008879FC /* SafetySwitchHapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetySwitchHapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingIndicatorButton.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,13 +54,13 @@
 		B803F2D5255DCA05000B2BB0 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
-				B866D406255D4C92000F79D4 /* LoadingIndicatorSwitch.swift */,
+				B866D406255D4C92000F79D4 /* SafetySwitch.swift */,
 				B8D4C4F6255C8145008B60F8 /* LoadingIndicatorButton.xib */,
 				B803F2CE255DC9FD000B2BB0 /* LoadingIndicatorShapeLayer.swift */,
 				B803F2CA255DC9FD000B2BB0 /* DonutShapeLayer.swift */,
 				B803F2CD255DC9FD000B2BB0 /* CircleShapeLayer.swift */,
 				B803F2CC255DC9FD000B2BB0 /* LoadingAnimation.swift */,
-				B8C4E48C255FDB27008879FC /* LoadingIndicatorHapticFeedbackGenerator.swift */,
+				B8C4E48C255FDB27008879FC /* SafetySwitchHapticFeedbackGenerator.swift */,
 			);
 			path = Switch;
 			sourceTree = "<group>";
@@ -196,9 +196,9 @@
 				B8967BE7255C7E2300ABB3AF /* AppDelegate.swift in Sources */,
 				B803F2D2255DC9FD000B2BB0 /* CircleShapeLayer.swift in Sources */,
 				B803F2CF255DC9FD000B2BB0 /* DonutShapeLayer.swift in Sources */,
-				B8C4E48D255FDB27008879FC /* LoadingIndicatorHapticFeedbackGenerator.swift in Sources */,
+				B8C4E48D255FDB27008879FC /* SafetySwitchHapticFeedbackGenerator.swift in Sources */,
 				B8967BE9255C7E2300ABB3AF /* SceneDelegate.swift in Sources */,
-				B866D407255D4C92000F79D4 /* LoadingIndicatorSwitch.swift in Sources */,
+				B866D407255D4C92000F79D4 /* SafetySwitch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

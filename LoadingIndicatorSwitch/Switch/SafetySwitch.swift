@@ -4,19 +4,22 @@
 
 import UIKit
 
+/**
+ A Switch, that needs a long press to be acitvated. Progress feedback of the waiting durations is provided.
+ 
+ For safety critical purposes and situations where it needs to be ensured that no accidential touches triggers the switch.
+ */
 @IBDesignable
-class LoadingIndicatorSwitch: UIControl {
+class SafetySwitch: UIControl {
     
     // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addGestures()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         addGestures()
     }
     
@@ -25,9 +28,15 @@ class LoadingIndicatorSwitch: UIControl {
         self.layoutIfNeeded()
     }
     
+    private var indicationType: IndicationType = .loading
+    private let hapticFeedback: SafetySwitchHapticFeedbackGenerator = SafetySwitchHapticFeedbackGenerator()
+    
     // MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.bounds.width / 2
         
         self.outerDonutLayer.layout()
         self.layer.addSublayer(outerDonutLayer)
@@ -57,7 +66,7 @@ class LoadingIndicatorSwitch: UIControl {
     func animateStroke() {
         
         let loadingAnimation = LoadingAnimation(
-            direction: loadingDirection, duration: loadingDuration
+            direction: indicationType, duration: loadingDuration
         )
         
         let strokeAnimationGroup = CAAnimationGroup()
@@ -72,8 +81,8 @@ class LoadingIndicatorSwitch: UIControl {
     // MARK: - Gestures / Haptics
     private lazy var gestureRecognizer: UILongPressGestureRecognizer? = nil
     
-    func addGestures() {
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+    private func addGestures() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressCompleted(gesture:)))
         longPress.minimumPressDuration = loadingDuration
         longPress.allowableMovement = self.bounds.width
         self.gestureRecognizer = longPress
@@ -81,7 +90,7 @@ class LoadingIndicatorSwitch: UIControl {
     }
     
     @objc
-    func longPress(gesture: UILongPressGestureRecognizer) {
+    private func longPressCompleted(gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             completeTransition()
             hapticFeedback.medium()
@@ -112,60 +121,54 @@ class LoadingIndicatorSwitch: UIControl {
     }
     
     // MARK: - Transitions
-    enum SwitchState {
-        case on
-        case off
-    }
-    
-    private var switchState: SwitchState = .off
-    private var loadingDirection: LoadingType = .loading
-    private let hapticFeedback: LoadingIndicatorHapticFeedbackGenerator = LoadingIndicatorHapticFeedbackGenerator()
-    
     /**
-     Updates the View and animate the transitioning process.
+     Starts the transitioning animation. State is untouched.
      */
     func startTransition() {
-        switch switchState {
-        case .on:
-            indicatorColor = .systemRed
-            stateColor = .clear
-            isAnimating = true
-        case .off:
-            indicatorColor = .systemGreen
-            stateColor = .clear
-            isAnimating = true
+        if isEnabled {
+            if isOn {
+                indicatorColor = .systemRed
+                stateColor = .clear
+                isAnimating = true
+            } else {
+                indicatorColor = .systemGreen
+                stateColor = .clear
+                isAnimating = true
+            }
         }
     }
     
     /**
-     Cancels the transitioning animation.
+     Cancels the transitioning animation. Fall back to last save state.
      */
     func abortTransition() {
-        switch switchState {
-        case .on:
+        if isOn {
             stateColor = .systemGreen
-        case .off:
+        } else {
             stateColor = .systemRed
         }
         isAnimating = false
     }
     
     /**
-     Completes the transitioning animation.
+     Completes the transitioning animation. The switch is toggled now.
      */
     func completeTransition() {
-        switch switchState {
-        case .on:
-            switchState = .off
+        if isOn {
             stateColor = .systemRed
-        case .off:
-            switchState = .on
+        } else {
             stateColor = .systemGreen
         }
+        isOn.toggle()
         isAnimating = false
     }
     
     // MARK: - Properties
+    /**
+     Determines the state of the switch. Default is On.
+     */
+    @IBInspectable var isOn: Bool = true
+    
     @IBInspectable lazy var indicatorWidth: CGFloat = 0.09 * self.bounds.width {
         didSet {
             loadingIndicatorShapeLayer.lineWidth = indicatorWidth
@@ -175,9 +178,9 @@ class LoadingIndicatorSwitch: UIControl {
     @IBInspectable var deloadingAnimation: Bool = false {
         didSet {
             if deloadingAnimation {
-                loadingDirection = .deloading
+                indicationType = .deloading
             } else {
-                loadingDirection = .loading
+                indicationType = .loading
             }
         }
     }
