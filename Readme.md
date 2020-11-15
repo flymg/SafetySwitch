@@ -6,7 +6,7 @@ A Swift 5 stateful switch which requires a long press to toggle. A loading indic
 <p align="center">
     <a href="#EXAMPE">Example</a> • 
     <a href="#SETUP">Setup</a> •
-    <a href="#INTERFACE BUILDER">Interface Builder</a>
+    <a href="#INTERFACE-BUILDER">Interface Builder</a>
 </p>
 <hr />
 
@@ -45,7 +45,7 @@ override func completeTransition() {
 }
 ```
 
-## INTERFACE BUILDER
+## INTERFACE-BUILDER
 The Switch can be customized in Storyboard Mode / Interface Builder.  
 By default, layouting will be done by `width` of the view. A **1:1** `aspect ration` constraint with fixed `height` will give the best experience.
 
