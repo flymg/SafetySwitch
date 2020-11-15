@@ -13,18 +13,20 @@ class CircleShapeLayer: CAShapeLayer {
         super.init(layer: layer)
     }
 
-    init(x: CGFloat, y: CGFloat, diameter: CGFloat, fillColor: UIColor) {
+    override init() {
+        self.x = 0
+        self.y = 0
+        self.diameter = 0
+        super.init()
+    }
+
+    func layout(x: CGFloat, y: CGFloat, diameter: CGFloat, fillColor: UIColor) {
         self.x = x
         self.y = y
         self.diameter = diameter
-
-        super.init()
-
-        self.layout()
+        
         self.fillColor = fillColor.cgColor
-    }
-
-    func layout() {
+        
         let circleRect = CGRect(
             x: x,
             y: y,
@@ -40,7 +42,6 @@ class CircleShapeLayer: CAShapeLayer {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Properties
     private var x: CGFloat
     private var y: CGFloat
     var diameter: CGFloat

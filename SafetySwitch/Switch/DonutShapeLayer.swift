@@ -14,27 +14,28 @@ class DonutShapeLayer: CAShapeLayer {
         super.init(layer: layer)
     }
 
-    init(x: CGFloat, y: CGFloat, outerDiameter: CGFloat, thickness: CGFloat, fillColor: UIColor) {
-        self.x = x
-        self.y = y
-        self.outerDiameter = outerDiameter
-        self.thickness = thickness
-
+    override init() {
+        self.x = 0
+        self.y = 0
+        self.outerDiameter = 0
+        self.thickness = 0
         super.init()
-        self.fillColor = fillColor.cgColor
-
     }
-
-    override convenience init() {
-        self.init(x: 0, y: 0, outerDiameter: 0, thickness: 0, fillColor: .black)
-    }
+//
+//    override convenience init() {
+//        self.init(x: 0, y: 0, outerDiameter: 0, thickness: 0, fillColor: .black)
+//    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func layout() {
-
+    func layout(x: CGFloat, y: CGFloat, outerDiameter: CGFloat, thickness: CGFloat, fillColor: UIColor) {
+        self.x = x
+        self.y = y
+        self.outerDiameter = outerDiameter
+        self.thickness = thickness
+        self.fillColor = fillColor.cgColor
         let outerDonutRect = CGRect(
             x: x,
             y: y,
@@ -63,7 +64,6 @@ class DonutShapeLayer: CAShapeLayer {
         self.mask = mask
     }
 
-    // MARK: - Properties
     private var x: CGFloat
     private var y: CGFloat
     private var outerDiameter: CGFloat

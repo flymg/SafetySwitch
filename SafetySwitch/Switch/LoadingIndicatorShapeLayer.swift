@@ -14,27 +14,29 @@ class LoadingIndicatorShapeLayer: CAShapeLayer {
         super.init(layer: layer)
     }
 
-    init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, loadingIndicatorThickness: CGFloat, strokeColor: UIColor, startAngle: CGFloat) {
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-
+    override init() {
+        self.x = 0
+        self.y = 0
+        self.width = 0
+        self.height = 0
         super.init()
 
-        self.strokeColor = strokeColor.cgColor
-        self.lineWidth = loadingIndicatorThickness
         self.fillColor = UIColor.clear.cgColor
         self.lineCap = .round
-
-        self.startAngle = deg2rad(angle: startAngle)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func layout() {
+    func layout(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, loadingIndicatorThickness: CGFloat, strokeColor: UIColor) {
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        
+        self.strokeColor = strokeColor.cgColor
+        self.lineWidth = loadingIndicatorThickness
 
         let loadingPathBox = CGRect(
             x: x,
@@ -45,7 +47,7 @@ class LoadingIndicatorShapeLayer: CAShapeLayer {
 
         let intermediatePath = UIBezierPath(ovalIn: loadingPathBox)
 
-        intermediatePath.rotateAroundCenter(angleRad: startAngle)
+        intermediatePath.rotateAroundCenter(angleRad: deg2rad(angle: startAngle))
 
         self.path = intermediatePath.cgPath
     }
@@ -54,16 +56,18 @@ class LoadingIndicatorShapeLayer: CAShapeLayer {
         return (angle + 270) / 360 * 2 * .pi
     }
 
-    // MARK: - Properties
     private var x: CGFloat
     private var y: CGFloat
     private var width: CGFloat
     private var height: CGFloat
 
-    lazy var startAngle: CGFloat = deg2rad(angle: 0)
+    var startAngle: CGFloat = 0
 }
 
 extension UIBezierPath {
+    /**
+     Rotate the whole Layer by a radian angle.
+     */
     func rotateAroundCenter(angleRad: CGFloat) {
         let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         var transform = CGAffineTransform.identity

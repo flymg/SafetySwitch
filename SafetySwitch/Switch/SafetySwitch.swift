@@ -5,10 +5,10 @@
 import UIKit
 
 /**
- A Switch, that needs a long press to be acitvated. Progress feedback of the waiting durations is provided.
+ A Switch, that needs a long press to be toggled. Progress feedback of the waiting durations is available.
  
- For safety critical purposes and situations where it needs to be ensured that no accidential touches triggers the switch.
- When the switch area is left while touching, the loading action is aborted.
+ For safety critical purposes and situations where it needs to be ensured that no accidential touches triggers a switch.
+ When the switch area is left by dragging or while touching, the toggle action is aborted.
  */
 @IBDesignable
 class SafetySwitch: UIControl {
@@ -29,28 +29,14 @@ class SafetySwitch: UIControl {
         self.layoutIfNeeded()
     }
     
-    private var indicationType: IndicationType = .loading
+    private var animationType: AnimationType = .loading
     private let hapticFeedback: SafetySwitchHapticFeedbackGenerator = SafetySwitchHapticFeedbackGenerator()
     
-    // MARK: - Layout
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = self.bounds.width / 2
-        
-        self.outerDonutLayer.layout()
-        self.layer.addSublayer(outerDonutLayer)
-        
-        // Layout Indication Layer, adding will be done by animation
-        self.loadingIndicatorShapeLayer.layout()
-        
-        self.loadingIndicatorDonutLayer.layout()
-        self.layer.addSublayer(loadingIndicatorDonutLayer)
-        
-        self.innerCircleLayer.layout()
-        self.layer.addSublayer(innerCircleLayer)
-    }
+    // MARK: - Layers
+    private var outerDonutLayer: DonutShapeLayer = DonutShapeLayer()
+    private var loadingIndicatorShapeLayer: LoadingIndicatorShapeLayer = LoadingIndicatorShapeLayer()
+    private var loadingIndicatorDonutLayer: DonutShapeLayer = DonutShapeLayer()
+    private var innerCircleLayer: CircleShapeLayer = CircleShapeLayer()
     
     // MARK: - Handle Darkmode
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -63,11 +49,46 @@ class SafetySwitch: UIControl {
         self.innerColor = innerColorSwitched
     }
     
+    // MARK: - Layout
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.outerDonutLayer.layout(x: 0,
+                                    y: 0,
+                                    outerDiameter: self.bounds.width,
+                                    thickness: outerWidth,
+                                    fillColor: outerColor
+        )
+        self.layer.addSublayer(outerDonutLayer)
+        
+        // Layout Indication Layer, adding will be done by animation
+        self.loadingIndicatorShapeLayer.layout(x: outerWidth + 0.5 * indicatorWidth,
+                                               y: outerWidth + 0.5 * indicatorWidth,
+                                               width: self.bounds.width - 2 * outerWidth - indicatorWidth,
+                                               height: self.bounds.width - 2 * outerWidth - indicatorWidth,
+                                               loadingIndicatorThickness: indicatorWidth,
+                                               strokeColor: indicatorColor)
+        
+        self.loadingIndicatorDonutLayer.layout(x: outerWidth,
+                                               y: outerWidth,
+                                               outerDiameter: self.bounds.width - 2 * outerWidth,
+                                               thickness: indicatorWidth,
+                                               fillColor: stateColor
+        )
+        self.layer.addSublayer(loadingIndicatorDonutLayer)
+        
+        self.innerCircleLayer.layout(x: outerWidth + indicatorWidth,
+                                     y: outerWidth + indicatorWidth,
+                                     diameter: self.bounds.width - 2 * indicatorWidth - 2 * outerWidth,
+                                     fillColor: innerColor)
+        self.layer.addSublayer(innerCircleLayer)
+    }
+
     // MARK: - Animation
     func animateStroke() {
         
         let loadingAnimation = LoadingAnimation(
-            direction: indicationType, duration: switchTime
+            direction: animationType, duration: switchTime
         )
         
         let strokeAnimationGroup = CAAnimationGroup()
@@ -123,7 +144,7 @@ class SafetySwitch: UIControl {
     
     // MARK: - Transitions
     /**
-     Starts the transitioning animation. State is untouched.
+     Starts the toggling transition. State is untouched. Animations start.
      */
     func startTransition() {
         if isEnabled {
@@ -140,7 +161,7 @@ class SafetySwitch: UIControl {
     }
     
     /**
-     Cancels the transitioning animation. Fall back to last save state.
+     Cancels the toggling transition. Fall back to last save state.
      */
     func abortTransition() {
         if isOn {
@@ -152,7 +173,9 @@ class SafetySwitch: UIControl {
     }
     
     /**
-     Completes the transitioning animation. The switch is toggled now.
+     Completes the toggling transitioning. The switch is toggled here.
+     
+     Override here to enable custom actions.
      */
     func completeTransition() {
         if isOn {
@@ -178,96 +201,100 @@ class SafetySwitch: UIControl {
         }
     }
     
+    /**
+     Shows the transition process as deloading. Default is false.
+     
+     Animation will show as Loading by default.
+     */
     @IBInspectable var isDeloading: Bool = false {
         didSet {
             if isDeloading {
-                indicationType = .deloading
+                animationType = .deloading
             } else {
-                indicationType = .loading
+                animationType = .loading
             }
         }
     }
     
+    /**
+     The Angle in degree where the loading indication should start. Default is 0.
+     */
     @IBInspectable var startAngle: CGFloat = 0 {
         didSet {
             loadingIndicatorShapeLayer.startAngle = startAngle
         }
     }
     
+    /**
+     The time [sec] it takes for the switch to toggle. This is also the animation time. Default is 1.
+     */
     @IBInspectable var switchTime: Double = 1 {
         didSet {
-            let temp = switchTime
-            switchTime = temp
+            switchTime = abs(switchTime)
+            self.gestureRecognizer?.minimumPressDuration = switchTime
         }
     }
     
+    /**
+     The thickness of the outer ring circle. Default is 2.5% of views width.
+     */
     @IBInspectable lazy var outerWidth: CGFloat = 0.025 * self.bounds.width {
         didSet {
             outerDonutLayer.thickness = outerWidth
         }
     }
     
+    /**
+     The color of the outer ring circle. Default is system label color.
+     */
     @IBInspectable var outerColor: UIColor = .label {
         didSet {
             outerDonutLayer.fillColor = outerColor.cgColor
         }
     }
     
+    /**
+     The color of the inner circle. Default is system label color.
+     */
     @IBInspectable var innerColor: UIColor = .label {
         didSet {
             innerCircleLayer.fillColor = innerColor.cgColor
         }
     }
-    // MARK: - Switch Colors
+    
+    /**
+     Determines whether or not the views rectangular background should be enabled. Default is false.
+     */
+    @IBInspectable var fullBackground: Bool = false {
+        didSet {
+            if fullBackground {
+                self.layer.masksToBounds = false
+                self.layer.cornerRadius = 0
+            } else {
+                self.layer.masksToBounds = true
+                self.layer.cornerRadius = self.bounds.width / 2
+            }
+        }
+    }
+    
+    /**
+     The color of the loading indicator. By default, the color switches and corellates to the state of the button.
+     */
     lazy var indicatorColor: UIColor = self.isOn ? self.isOffColor : self.isOnColor {
         didSet {
             loadingIndicatorShapeLayer.strokeColor = indicatorColor.cgColor
         }
     }
     
+    /**
+     The color of the button state. By default, the color switches and corellates to the loading indicator.
+     */
     lazy var stateColor: UIColor = self.isOn ? self.isOnColor : self.isOffColor {
-         didSet {
-             loadingIndicatorDonutLayer.fillColor = stateColor.cgColor
-         }
-     }
-    
-    // MARK: - Layers
-    private lazy var outerDonutLayer: DonutShapeLayer = {
-        return DonutShapeLayer(x: 0,
-                               y: 0,
-                               outerDiameter: self.bounds.width,
-                               thickness: outerWidth,
-                               fillColor: outerColor
-        )
-    }()
-    
-    private lazy var loadingIndicatorShapeLayer: LoadingIndicatorShapeLayer = {
-        return LoadingIndicatorShapeLayer(x: outerWidth + 0.5 * indicatorWidth,
-                                          y: outerWidth + 0.5 * indicatorWidth,
-                                          width: self.bounds.width - 2 * outerWidth - indicatorWidth,
-                                          height: self.bounds.width - 2 * outerWidth - indicatorWidth,
-                                          loadingIndicatorThickness: indicatorWidth,
-                                          strokeColor: indicatorColor,
-                                          startAngle: startAngle)
-    }()
-    
-    private lazy var loadingIndicatorDonutLayer: DonutShapeLayer = {
-        return DonutShapeLayer(x: outerWidth,
-                               y: outerWidth,
-                               outerDiameter: self.bounds.width - 2 * outerWidth,
-                               thickness: indicatorWidth,
-                               fillColor: stateColor
-        )
-    }()
-    
-    private lazy var innerCircleLayer: CircleShapeLayer = {
-        return CircleShapeLayer(x: outerWidth + indicatorWidth,
-                                y: outerWidth + indicatorWidth,
-                                diameter: self.bounds.width - 2 * indicatorWidth - 2 * outerWidth,
-                                fillColor: innerColor
-        )
-    }()
-    
+        didSet {
+            loadingIndicatorDonutLayer.fillColor = stateColor.cgColor
+        }
+    }
+
     var isAnimating: Bool = false {
         didSet {
             if isAnimating {
