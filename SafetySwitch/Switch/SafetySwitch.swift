@@ -53,6 +53,11 @@ class SafetySwitch: UIControl {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if !fullBackground {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = self.bounds.width / 2
+        }
+        
         self.outerDonutLayer.layout(x: 0,
                                     y: 0,
                                     outerDiameter: self.bounds.width,
