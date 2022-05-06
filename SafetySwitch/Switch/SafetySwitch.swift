@@ -1,6 +1,6 @@
 //
 // created 11.11.20
-// rapid.io
+// lumibit.io
 
 import UIKit
 
